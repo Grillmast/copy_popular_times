@@ -29,6 +29,14 @@ app.get('/', async (req, res) => {
   }
 });
 
+app.get('/login', (req, res) => {
+    try {
+      res.render('login', { layout: 'index' });
+    } catch (error) {
+      res.status(500).console.log(error);
+    }
+});
+
 // sync sequelize models to the database, then turn on the server
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
