@@ -4,7 +4,7 @@ const exphbs = require('express-handlebars');
 const sequelize = require('./config/connection');
 const path = require('path');
 const Articles = require('./models/articles');
-const controllers = require("./controllers")
+const authRouter = require('./controllers/api/auth')
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -39,6 +39,7 @@ app.get('/login', (req, res) => {
 });
 
 
+app.use('/api/auth', authRouter);
 
 // sync sequelize models to the database, then turn on the server
 sequelize.sync({ force: false }).then(() => {

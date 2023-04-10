@@ -1,6 +1,26 @@
 const router = require('express').Router();
 
 const Users = require('../../models/User');
+
+router.post('/login', async (req, res) => {
+	try {
+		console.log(req.body);
+		const users = await Users.findOne({
+			where: {
+				email: req.body.email,
+				password: req.body.password,
+			},
+		});
+		res.status(200).json(users);
+	} catch (error) {
+		res.status(500).json(error);
+	}
+});
+
+  
+module.exports = router;
+
+
 // var router = require('express').Router();
 // const exphbs = require('express-handlebars');
 
@@ -30,19 +50,3 @@ const Users = require('../../models/User');
 // module.exports = router;
 
 // api/auth/login
-router.post('/login', async (req, res) => {
-	try {
-		console.log(req.body);
-		const users = await Users.findOne({
-			where: {
-				email: req.body.email,
-				password: req.body.password,
-			},
-		});
-		res.status(200).json(users);
-	} catch (error) {
-		res.status(500).json(error);
-	}
-});
-
-module.exports = router;

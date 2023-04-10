@@ -18,18 +18,16 @@
       </div>
 
       <div class="card-container">
-        {{#each data.results}}
+        {{#each articles}}
         <div class="card">
-          <div class="card-header-title is-centered is-size-3">{{title}}</div>
-          <img class="card-image" src="https://via.placeholder.com/150x150.png?text=No+Image" alt="{{title}}">
-          <div class="card-content">{{abstract}}</div>
+        <div class="card-header-title is-centered is-size-3">{{title}}</div>
+        <img class="card-image" src="https://via.placeholder.com/150x150.png?text=No+Image" alt="{{title}}">
+        <div class="card-content">{{body}}</div>
+        <button class="save-button" data-id="{{id}}">Save</button>
         </div>
         {{/each}}
-      </div>
+        </div>
 
-      {{#if isAuthenticated}}
-      <a href="/saved-articles">Saved Articles</a>
-      {{/if}}
     </section>
   
   </section>
