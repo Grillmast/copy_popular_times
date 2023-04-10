@@ -3,7 +3,8 @@ require('dotenv').config();
 const exphbs = require('express-handlebars');
 const sequelize = require('./config/connection');
 const path = require('path');
-const articleModel = require('./models/articles');
+const Articles = require('./models/articles');
+const controllers = require("./controllers")
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -21,7 +22,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.get('/', async (req, res) => {
   try {
-    const articles = await articleModel.fetchAll(); 
+    const articles = await Articles.fetchAll(); 
     res.render('main', { layout: 'index', data: articles }); 
   } catch (error) {
     console.error(error);
@@ -36,6 +37,8 @@ app.get('/login', (req, res) => {
       res.status(500).console.log(error);
     }
 });
+
+
 
 // sync sequelize models to the database, then turn on the server
 sequelize.sync({ force: false }).then(() => {

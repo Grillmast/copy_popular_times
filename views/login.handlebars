@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Popular Times</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link rel="stylesheet" type="text/css" href="../public/css/style.css">
+  <link rel="stylesheet" href="../public/css/style.css">
 </head>
 
 <body class=" p-3 is-family-sans-serif">
@@ -48,7 +48,7 @@
             
             <div class="field is-grouped">
             <div class="control">
-                <button class="button is-link " type="submit">Login</button>
+                <button class="button is-link " type="submit"  onsubmit="loginFormHandler(event)">Login</button>
             </div>
             </div>
         </form>
@@ -108,4 +108,5 @@
         </section>
 
     </main>
+    <script src="js/login.js"></script>
 </body>
